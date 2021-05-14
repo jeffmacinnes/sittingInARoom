@@ -19,8 +19,8 @@ function loopTrack(nextSound) {
   currentSound = nextSound;
   currentSound.setVolume(0.8);
 
-  // let comp = new p5.Compressor();
-  // comp.process(currentSound, 0, 0, 20, -1, 1);
+  let comp = new p5.Compressor();
+  comp.process(currentSound, 0, 0, 20, -1, 1);
   currentSound.play();
   loopCounter.innerHTML = `iteration: ${loopIdx + 1}`;
 
@@ -52,6 +52,7 @@ function setup() {
   getAudioContext().suspend();
   playButton = document.getElementById("play-button");
   playButton.addEventListener("click", toggleSound); // button.parent("control-box");
+  playButton.addEventListener("touchstart", toggleSound);
 
   loopCounter = document.getElementById("loop-counter");
 

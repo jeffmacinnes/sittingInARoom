@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.3.1/lib/p5.js"></script>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="lib/p5.sound.min.js"></script>
+    <script src="lib/benchmark.js"></script>
+    <script src="lib/lodash.js"></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto:wght@400;500&family=Sulphur+Point:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <title>I am sitting in a browser</title>
+  </head>
+  <body>
+    <div class="content">
+      <section class="header">
+        <div class="header-text">
+          <div>
+            <span id="title">I am sitting in a browser</span>
+            <br />
+            <span id="subhead">an homage to Alvin Lucier in celebration of his 90th birthday</span>
+          </div>
+
+          <div>
+            Performances of <span class="blue">I am sitting in a room</span> traditionally showcase
+            the resonant frequencies of the space in which it's staged. This version substitutes
+            physical space for the browser.
+            <br />
+            <br />
+            The relationship between the browser and the webpage defines the characteristics of the
+            delay on each subsequent iteration.
+          </div>
+
+          <div>
+            Since this relationship is unique for each viewer, the resulting audio (and
+            visualization) represents a unique performance reflecting the device on which it was
+            performed.
+          </div>
+
+          <div>
+            <a
+              href="https://issueprojectroom.org/event/i-am-sitting-room-alvin-luciers-90th-birthday-celebration"
+              target="_blank"
+            >
+              27 hour live streamed performances, various artists - May 14th 2021 (Issue Project
+              Room)</a
+            >
+            <br />
+            <br />
+            <a href="https://soundonpapereditions.bandcamp.com/releases" target="_blank"
+              >I am sitting in a room. Archival Recordings 1969-2019 Boxset (Bandcamp)</a
+            >
+            <br />
+            <br />
+            <a
+              href="https://www.nytimes.com/2021/05/11/arts/music/alvin-lucier-sitting-in-a-room.html"
+              target="_blank"
+              >A piece of music will speak once more. For 26 hours (NYT)</a
+            >
+            <br />
+            <br />
+            <span id="attribution">
+              site: <a href="https://www.jeffmacinnes.com" target="_blank">jeff macinnes</a>
+            </span>
+          </div>
+        </div>
+        <div id="control-box">
+          <div id="play-button"></div>
+          <div id="loop-counter">iteration: 0</div>
+        </div>
+      </section>
+      <section class="plot-container">
+        <div id="spectrogram"></div>
+      </section>
+    </div>
+  </body>
+
+  <script src="index.js"></script>
+</html>

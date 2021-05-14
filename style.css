@@ -1,0 +1,154 @@
+body,
+html {
+  margin: 0;
+  font-size: 10px;
+  /* color: rgb(62, 62, 62); */
+  box-sizing: border-box;
+}
+
+.content {
+  width: 100vw;
+  height: 100vh;
+  max-width: 1200px;
+  margin: auto;
+}
+
+a {
+  color: rgb(162, 162, 162);
+  cursor: pointer;
+}
+
+#attribution {
+  font-size: 1rem;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  padding: 4.5rem 0rem 2rem;
+  margin-bottom: 2rem;
+  /* background-color: rgb(220, 220, 220); */
+  backdrop-filter: blur(3px);
+  display: flex;
+  flex-direction: column;
+  border-bottom: solid 1px black;
+}
+
+.plot-container {
+  width: 70vw;
+  margin: auto;
+}
+
+.header-text {
+  display: flex;
+  /* flex-direction: column; */
+  font-family: "Roboto", sans-serif;
+  text-align: right;
+}
+
+.header-text div {
+  width: 25%;
+  padding: 1rem 1.5rem;
+  font-size: 1.25rem;
+  line-height: 1.45;
+}
+
+#subhead {
+  font-family: "Sulphur Point", sans-serif;
+  font-weight: 400;
+  display: block;
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  color: black;
+}
+
+#title {
+  font-family: "Sulphur Point", sans-serif;
+  font-weight: 400;
+  color: #2947e0;
+  font-size: 6.4rem;
+  line-height: 4.4rem;
+  letter-spacing: -0.3rem;
+}
+
+.blue {
+  color: #2947e0;
+  font-weight: 500;
+}
+
+#control-box {
+  display: flex;
+  width: 100%;
+  margin: auto;
+  margin-top: 20px;
+  align-items: center;
+  justify-content: flex-end;
+  font-family: "Sulphur Point", sans-serif;
+  font-size: 1.5rem;
+}
+
+#control-box * {
+  height: 30px;
+  cursor: pointer;
+}
+
+#play-button {
+  width: 30px;
+  height: 30px;
+  margin-right: 2rem;
+  background-image: url("assets/play.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#play-button:hover {
+  background-image: url("assets/play-hover.svg");
+}
+
+#play-button.inactive {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+#stop-button {
+  background-image: url("assets/stop.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#stop-button:hover {
+  background-image: url("assets/stop-hover.svg");
+}
+
+#spectrogram {
+  margin: auto;
+}
+
+@media (min-width: 200px) and (max-width: 1000px) {
+  .header {
+    position: relative;
+  }
+
+  .header-text {
+    flex-direction: column;
+    width: 50vw;
+    text-align: left;
+  }
+
+  .header-text div {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    font-size: 1.25rem;
+    line-height: 1.45;
+  }
+
+  #control-box {
+    padding-left: 1.5rem;
+    justify-content: flex-start;
+  }
+
+  #play-button {
+    margin-right: 2rem;
+  }
+}

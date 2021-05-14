@@ -19,8 +19,8 @@ function loopTrack(nextSound) {
   currentSound = nextSound;
   currentSound.setVolume(0.8);
 
-  let comp = new p5.Compressor();
-  comp.process(currentSound, 0, 0, 20, -1, 1);
+  // let comp = new p5.Compressor();
+  // comp.process(currentSound, 0, 0, 20, -1, 1);
   currentSound.play();
   loopCounter.innerHTML = `iteration: ${loopIdx + 1}`;
 
@@ -30,7 +30,8 @@ function loopTrack(nextSound) {
   recorder.record(newSound, clipDuration, () => {
     // manipulate
     let delay = new p5.Delay();
-    delay.process(newSound, 0.12, 0.5);
+    // delay.process(newSound, 0.12, .5);
+    delay.process(newSound, delayTime, delayFB);
 
     // increment loop idx
     loopIdx++;
@@ -56,7 +57,7 @@ function setup() {
   let container = document.getElementById("spectrogram");
   let domRect = container.getBoundingClientRect();
   plotWidth = domRect.width;
-  let cnv = createCanvas(plotWidth, 5000);
+  let cnv = createCanvas(plotWidth, 6000);
   cnv.parent("spectrogram");
   background(255);
   fft = new p5.FFT();
@@ -64,10 +65,26 @@ function setup() {
   frameRate(30);
 }
 
+let frSamples = [];
+let meanFrDeviation;
+let delayTime;
+let delayFB;
 function toggleSound() {
   if (currentSound.isPlaying() && recorder.recording) {
     currentSound.stop();
   } else {
+    // calculate mean fr deviation
+    let deviations = frSamples.map((fr) => Math.abs(fr - 30));
+    meanFrDeviation = d3.mean(deviations);
+
+    // set delay params
+    let screenArea = window.innerWidth * window.innerHeight;
+    delayTime = map(screenArea, 250125, 2304000, 0.05, 0.2, true); // screen area range (750x1334) to (1920x1200)
+    delayFB = map(meanFrDeviation, 0, 0.75, 0.2, 0.5, true);
+    console.log("delayTime: ", delayTime);
+    console.log("delayFB: ", delayFB);
+
+    // start loop
     loopTrack(currentSound);
     playButton.classList.add("inactive");
   }
@@ -99,5 +116,9 @@ function draw() {
       let x = random(spanStart, spanEnd + 1);
       point(x, y);
     });
+  } else {
+    // update the frame rate samples
+    let idx = frameCount % 10;
+    frSamples[idx] = frameRate();
   }
 }

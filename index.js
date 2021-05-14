@@ -49,6 +49,7 @@ let loopCounter;
 let plotWidth;
 
 function setup() {
+  getAudioContext().suspend();
   playButton = document.getElementById("play-button");
   playButton.addEventListener("click", toggleSound); // button.parent("control-box");
 
@@ -85,6 +86,7 @@ function toggleSound() {
     console.log("delayFB: ", delayFB);
 
     // start loop
+    userStartAudio();
     loopTrack(currentSound);
     playButton.classList.add("inactive");
   }
